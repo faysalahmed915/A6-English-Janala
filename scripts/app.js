@@ -1,11 +1,3 @@
-const navbarSection =document.getElementById("navbar-section");
-const banner =document.getElementById("banner-section");
-const loginSection = document.getElementById("login-section");
-const mainbody =document.getElementById("main-body");
-
-// Toggle section
-
-
 // button section
 const allLesson = async () => {
     const response = await fetch(`https://openapi.programming-hero.com/api/levels/all`);
@@ -34,32 +26,38 @@ allLesson()
 
 
 // vocabulary box section
+
+// fetch all words
 const allWords = async (lessonId) => {
     const response = await fetch(`https://openapi.programming-hero.com/api/level/${lessonId}`);
 
     const data = await response.json();
     showWords(data.data)
 }
-
+// show all words
 const showWords = (words) => {
     const wordContainer = document.getElementById("word-container");
-
+do
     wordContainer.innerHTML = ""
+    // No words found
     if (words.length < 1) {
-        // const nextLessonContainer = document.getElementById("next-lesson-container");
-
-        const div = document.createElement("div");
-        div.innerHTML = `
-                <div class="card bg-base-100 shadow-lg w-1/2 mx-auto my-2 card-body text-center col-span-3">
-                    <h2>
-                        <i class="fa-solid fa-triangle-exclamation text-5xl text-red-700"></i>
-                    </h2>
-                    <p class="my-2">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
-                    <h2 class="font-bold text-xl">নেক্সট Lesson এ যান</h2>
-                </div>
+        const nextLessonContainer = document.getElementById("word-container");
+        nextLessonContainer.innerHTML = `
+                <div class=" col-span-full content-center mx-auto justify-center">
+                            <div class="card bg-base-100 shadow-lg mx-auto my-2">
+                                <div class="card-body text-center">
+                                    <h2>
+                                        <i class="fa-solid fa-triangle-exclamation text-5xl text-red-700"></i>
+                                    </h2>
+                                    <p class="my-2">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+                                    <h2 class="font-bold text-xl">নেক্সট Lesson এ যান</h2>
+                                </div>
+                            </div>
+                        </div>
         `
         wordContainer.appendChild(div)
     }
+    // Words found
     else {
 
         words.forEach(element => {

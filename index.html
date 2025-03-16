@@ -22,7 +22,7 @@
 <body>
     <header>
         <!-- navbar -->
-        <div id="navbar-section" class="navbar bg-base-200 shadow-lg px-8">
+        <div id="navbar-section" class="navbar bg-base-200 shadow-lg px-8 hidden">
             <div class="flex-1">
                 <a class="btn btn-ghost text-xl font-bold">English<span><i
                             class="fa-brands fa-windows text-3xl text-[linear-gradient(120deg,_#F8CCFB,_#ACD2FD)]"></i></span>জানালা</a>
@@ -47,11 +47,11 @@
                         <p class="text-lg">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার
                             দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
                         <fieldset class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
-                            <input type="text" class="input mb-3 w-[80%]" placeholder="Id or Email" />
+                            <input id="input-text" type="text" class="input mb-3 w-[80%]" placeholder="Id or Email" />
                             <br>
-                            <input type="password" value="12345" class="input w-[80%]" placeholder="Password" />
+                            <input id="input-password" type="password" class="input w-[80%]" placeholder="Enter Login Code (123456)" />
                             <br>
-                            <button class="btn btn-primary mt-4">Get Started</button>
+                            <button id="get-started" class="btn btn-primary mt-4">Get Started</button>
                         </fieldset>
 
                     </div>
@@ -61,7 +61,7 @@
             </div>
         </div>
     </header>
-    <main>
+    <main id="main-body" class="container mx-auto hidden">
         <!-- test section -->
         <section>
             <!-- <div id="word-box-container" class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-base-200 p-5 my-5"></div> -->
@@ -80,7 +80,8 @@
         </section>
 
 
-        <!-- lessons -->
+        <!-- Let's Learn Vocabularies -->
+
         <section class="features">
             <div class="features-content">
                 <h2 class="text-3xl font-bold text-center my-8"><span class="text-[#00BCFF]">Let's</span> Learn
@@ -98,10 +99,11 @@
 
 
                 <!-- vocabularies card box -->
+
                 <div id="next-lesson-container">
                     <div id="word-container" class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-base-200 p-5 my-5">
                         <!-- card-1 -->
-
+                        
                         <!-- <div class="card bg-base-100 shadow-lg">
                         <div class="card-body text-center">
                             <h2 class="font-bold text-xl">Cookies!</h2>
@@ -194,6 +196,8 @@
 
     <!-- Scrips -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/toggle.js"></script>
+    <script src="scripts/login.js"></script>
 
 </body>
 
