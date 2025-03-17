@@ -19,16 +19,17 @@
     <title>Engish Janala</title>
 </head>
 
-<body>
+<body class="scroll-smooth">
     <header>
         <!-- navbar -->
-        <div id="navbar-section" class="navbar bg-base-200 shadow-lg px-8 hidden">
+        <div id="navbar-section" class="navbar bg-base-200 shadow-lg px-8 fixed z-10 w-full">
             <div class="flex-1">
                 <a class="btn btn-ghost text-xl font-bold">English<span><i
                             class="fa-brands fa-windows text-3xl text-[linear-gradient(120deg,_#F8CCFB,_#ACD2FD)]"></i></span>জানালা</a>
             </div>
             <div class="flex-none gap-4">
-                <button class="btn btn-outline btn-primary">FAQ</button>
+                <!-- <a href="#faq" class="snap-always"></a> -->
+                <button id="to-faq" class="btn btn-outline btn-primary">FAQ</button>
                 <button class="btn btn-outline btn-primary">Learn</button>
                 <button class="btn btn-outline btn-primary">Logout</button>
             </div>
@@ -49,7 +50,8 @@
                         <fieldset class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
                             <input id="input-text" type="text" class="input mb-3 w-[80%]" placeholder="Id or Email" />
                             <br>
-                            <input id="input-password" type="password" class="input w-[80%]" placeholder="Enter Login Code (123456)" />
+                            <input id="input-password" type="password" class="input w-[80%]"
+                                placeholder="Enter Login Code (123456)" />
                             <br>
                             <button id="get-started" class="btn btn-primary mt-4">Get Started</button>
                         </fieldset>
@@ -61,14 +63,15 @@
             </div>
         </div>
     </header>
-    <main id="main-body" class="container mx-auto hidden">
+    <main id="main-body" class="container mx-auto">
         <!-- test section -->
-        <section>
+
+        <section hidden>
             <!-- <div id="word-box-container" class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-base-200 p-5 my-5"></div> -->
             <div class=" col-span-2 content-center mx-auto justify-center">
                 <div class="card bg-base-100 shadow-lg w-1/2 mx-auto my-2">
                     <div class="card-body text-center">
-                        <h2>
+                        <h2 id="test-modal">
                             <i class="fa-solid fa-triangle-exclamation text-5xl text-red-700"></i>
                         </h2>
                         <p class="my-2">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
@@ -89,8 +92,12 @@
                 <!-- lesson btn -->
                 <div id="button-container" class="flex gap-2 justify-center">
                 </div>
+                <!-- spinner div -->
+                <div id="spinner" class="text-center mt-5 hidden">
+                    <span class="loading loading-dots loading-xl"></span>
+                </div>
                 <!-- unselected section -->
-                <div class="card bg-base-200 shadow-sm m-5 p-5 text-center">
+                <div id="select-lesson" class="card bg-base-200 shadow-sm m-5 p-5 text-center">
                     <div class="card-body">
                         <h2 class="text-center text-xl">আপনি এখনো কোন Lesson Select করেন ন</h2>
                         <p class="text-3xl font-semibold mt-6">একটি Lesson Select করুন।</p>
@@ -100,29 +107,41 @@
 
                 <!-- vocabularies card box -->
 
-                <div id="next-lesson-container">
-                    <div id="word-container" class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-base-200 p-5 my-5">
-                        <!-- card-1 -->
-                        
-                        <!-- <div class="card bg-base-100 shadow-lg">
-                        <div class="card-body text-center">
-                            <h2 class="font-bold text-xl">Cookies!</h2>
-                            <p>We are using cookies for no reason.</p>
-                            <h2 class="font-bold text-xl">bangla</h2>
-                            <div class="flex justify-between ">
-                                <button class="btn bg-blue-100"><i class="fa-solid fa-circle-info"></i></button>
-                                <button class="btn bg-blue-100"><i class="fa-solid fa-volume-high"></i></button>
-                            </div>
-                        </div>
-                    </div> -->
+                <div id="lesson-container">
+                    <div id="word-container" class="grid grid-cols-1 md:grid-cols-3 gap-4 p-5 mt-5">
 
                     </div>
+
+                    <!-- modal box -->
+                    <div>
+                        <!-- You can open the modal using ID.showModal() method -->
+                         
+                        <!-- <button class="btn" onclick="my_modal_3.showModal()">open modal</button> -->
+                        <dialog id="my_modal_3" class="modal">
+
+                            <!-- <div class="modal-box">
+                                <form method="dialog">
+                                    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                </form>
+                                <h3 class="text-lg font-bold">details.word <span><i class="fa-solid fa-microphone"></i></span> details.pronunciation</h3>
+                                <p class="font-semibold">meaning</p>
+                                <h3 class="text-lg font-bold">details.meaning</h3>
+                                <p class="font-semibold">Example</p>
+                                <h3 class="text-lg font-bold">details.sentence</h3>
+                                <p class="font-semibold">Synonyms</p>
+                                <h3 class="text-lg font-bold">detail.synonyms</h3>
+                                <h3 class="text-lg font-bold">Hello!</h3>
+                                
+                            </div> -->
+                        </dialog>
+                    </div>
+
                 </div>
             </div>
         </section>
 
         <!-- FAQ Section -->
-        <section>
+        <section id="faq">
             <h2 class="text-3xl text-center font-bold"><span class="text-[#00BCFF]">Frequently</span> Asked Questions
             </h2>
             <!-- Accordion -->
@@ -197,7 +216,10 @@
     <!-- Scrips -->
     <script src="scripts/app.js"></script>
     <script src="scripts/toggle.js"></script>
-    <script src="scripts/login.js"></script>
+    <script src="scripts/utilities.js"></script>
+    <script src="scripts/details.js"></script>
+    <script src="scripts/simple.js"></script>
+    <!-- <script src="scripts/login.js"></script> -->
 
 </body>
 
