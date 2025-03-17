@@ -1,5 +1,12 @@
 // scroll to faq section
-document.getElementById("to-faq").addEventListener("click", function () {
-    document.getElementById("faq").scrollIntoView({ behavior: "smooth" });
-  });
+
+const scroll = (from, to) => {
+    document.getElementById(from).addEventListener("click", function () {
+        document.getElementById(to).scrollIntoView({ behavior: "smooth" });
+    });
+}
+
+scroll("to-faq", "faq")
+scroll("to-learn", "learn")
+
 

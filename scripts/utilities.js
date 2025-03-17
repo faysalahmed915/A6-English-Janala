@@ -22,3 +22,12 @@ const removeBgColor = (tag) => {
 }
 
 
+// show selected lesson
+const showSelectedLesson = (btnSelection) => {
+    const element = document.getElementsByClassName("btn-selection");
+    // console.log(typeof element)
+    for (let i = 0; i < element.length; i++) {
+        element[i].classList.add("btn-outline");
+    }
+    document.getElementById(btnSelection).classList.remove("btn-outline");
+}
